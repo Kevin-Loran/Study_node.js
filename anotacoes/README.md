@@ -1,1 +1,12 @@
-# Anota‡äes e conceitos 
+# Anotaï¿½ï¿½es e conceitos 
+
+Resumos de conceitos, dÃºvidas resolvidas e referÃªncias Ãºteis.
+```
+
+---
+
+Depois de salvar todos (`Ctrl+S`), abre o terminal do VS Code com **Ctrl+`** e rode:
+```
+git add .
+git commit -m "docs: atualiza READMEs de todas as pastas"
+git push
