@@ -8,6 +8,7 @@ router.get('/', homeControllers.index);
 
 
 //Rotas de login
-router.get('/login/index', loginControllers.index)
+router.get('/login/index', loginControllers.index);
+router.post('/login/register', loginControllers.register);
 
 module.exports = router;
