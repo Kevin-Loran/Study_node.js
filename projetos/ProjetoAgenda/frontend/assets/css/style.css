@@ -19,9 +19,9 @@ body {
 }
 
 .container {
-  max-width: 640px;
+  max-width: 940px;
   margin: 50px auto;
-  background: #e50303;
+  background: #ffffff;
   padding: 20px;
   border-radius: 10px;
 }
