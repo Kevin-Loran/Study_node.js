@@ -1,0 +1,58 @@
+const mongoose = require('mongoose')
+const validator = require('validator') 
+
+
+const contatoSchama = new mongoose.Schema({
+    nome:      {type: String, required: true},
+    sobrenome: {type: String, required: false, default: ''},
+    email:     {type: String, required: true},
+    telefone:  {type: Number, required: true},
+    Criado :   {type: Date, default: Date.now},
+});
+
+const contatoModel = mongoose.model('contato', contatoSchama);
+
+function Contato(body){
+    this.body = body;
+    this.errors = [];
+    this.contato = null;
+};
+
+Contato.buscarPorId = async function() {
+    if(typeof id !== 'string') return;
+    const user = await contatoModel.findbyId(id);
+    return
+};
+
+Contato.prototype.register = async function() {
+    this.valida();
+    if(this.errors.length > 0) return;
+    this.contato = await contatoModel.create(this.body);
+};
+
+Contato.prototype.valida = function() {
+    this.cleanUp();
+
+
+    if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
+    if(!this.body.nome) this.errors.push('Nome é Obrigatorio para esse campo.')
+    if(!this.body.email && !this.body.telefone) {
+        this.errors.push('Pelo menos um contato tem que ser colocado: Email ou telefone.')
+    };
+};
+
+Contato.prototype.cleanUp = function()  {
+    for(let key in this.body){
+        if(typeof this.body[key] !== 'string') {
+            this.body[key] = '';
+        }
+    }
+    this.body = {
+        nome: this.body.nome,
+        sobrenome: this.body.sobrenome,
+        email: this.body.email,
+        telefone: this.body.telefone
+    }
+};
+
+module.exports = Contato;
