@@ -18,10 +18,10 @@ function Contato(body){
     this.contato = null;
 };
 
-Contato.buscarPorId = async function() {
+Contato.buscarPorId = async function(id) {
     if(typeof id !== 'string') return;
-    const user = await contatoModel.findbyId(id);
-    return
+    const contato = await contatoModel.findById(id);
+    return contato
 };
 
 Contato.prototype.register = async function() {
@@ -51,8 +51,15 @@ Contato.prototype.cleanUp = function()  {
         nome: this.body.nome,
         sobrenome: this.body.sobrenome,
         email: this.body.email,
-        telefone: this.body.telefone
+        telefone: Number(this.body.telefone)
     }
 };
+
+Contato.prototype.edit = async function(id) {
+    if(typeof id !== 'string') return;
+    this.valida();
+    if(this.errors.length > 0) return;
+    this.contato = await contatoModel.findByIdAndUpdate(id, this.body, {new: true});
+}
 
 module.exports = Contato;

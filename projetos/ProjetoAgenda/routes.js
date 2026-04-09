@@ -21,5 +21,6 @@ router.get('/login/logout', loginControllers.logout)
 router.get('/contato/index', loginRequired, contatoControllers.index)
 router.post('/contato/register', loginRequired, contatoControllers.register)
 router.get('/contato/index/:id',contatoControllers.editIndex)
+router.post('/contato/edit/:id', loginRequired,contatoControllers.edit)
 
 module.exports = router;
