@@ -20,7 +20,8 @@ router.get('/login/logout', loginControllers.logout)
 //Rotas de Contato
 router.get('/contato/index', loginRequired, contatoControllers.index)
 router.post('/contato/register', loginRequired, contatoControllers.register)
-router.get('/contato/index/:id',contatoControllers.editIndex)
+router.get('/contato/index/:id',loginRequired, contatoControllers.editIndex)
 router.post('/contato/edit/:id', loginRequired,contatoControllers.edit)
 
+router.get('/contato/delete/:id', loginRequired,contatoControllers.delete)
 module.exports = router;
