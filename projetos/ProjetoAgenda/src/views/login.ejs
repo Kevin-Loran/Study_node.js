@@ -14,7 +14,7 @@
         <div class="col-md-6 px-4">
           <h4>criar conta ou entrar</h4>
 
-          <form action="/login/register" method="post">
+          <form  class="form-cadastro"  action="/login/register" method="post">
             <input type="hidden" name="_csrf" value= <%= csrfToken %>>
             <div class="form-group">
               <h4>Fazer cadastro</h4>
@@ -34,7 +34,7 @@
           <h4>Fazer login</h4>
           <p>faça seu login se sua conta ja é existente:</p>
           
-          <form action="/login/login" method="post">
+          <form class="form-login" action="/login/login" method="post">
             <input type="hidden" name="_csrf" value= <%= csrfToken %>>
             <div class="form-group">
               <h4>Fazer login(conta existente)</h4>
